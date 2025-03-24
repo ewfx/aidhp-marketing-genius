@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Active Cash\u00ae Card",
+    "rewards": "Unlimited 2% cash rewards on purchases",
+    "intro_offer": "$200 cash rewards bonus after spending $500 in the first 3 months",
+    "annual_fee": "$0",
+    "apr": "0% intro APR for 12 months on purchases and balance transfers, then 19.24%, 24.24%, or 29.24% variable APR",
+    "learn_more": "/active-cash-credit-card/"
+  },
+  {
+    "name": "Autograph Journeys\u2120 Card",
+    "rewards": "5X points on hotels, 4X on airlines, 3X on other travel and restaurants, 1X on other purchases. $50 annual airline credit.",
+    "intro_offer": "60,000 bonus points after spending $4,000 in the first 3 months",
+    "annual_fee": "$95",
+    "apr": "NA",
+    "learn_more": "/autograph-journey-visa-credit-card/"
+  },
+  {
+    "name": "Autograph\u00ae Card",
+    "rewards": "3X points on restaurants, travel, gas, transit, streaming, and phone plans. 1X on other purchases.",
+    "intro_offer": "20,000 bonus points after spending $1,000 in the first 3 months",
+    "annual_fee": "$0",
+    "apr": "0% intro APR for 12 months on purchases, then 19.24%, 24.24%, or 29.24% variable APR",
+    "learn_more": "/autograph-visa-credit-card/"
+  },
+  {
+    "name": "Reflect\u00ae Card",
+    "rewards": "NA",
+    "intro_offer": "NA",
+    "annual_fee": "$0",
+    "apr": "0% intro APR for 21 months on purchases and balance transfers, then 17.24%, 23.74%, or 28.99% variable APR",
+    "learn_more": "/reflect-visa-credit-card/"
+  },
+  {
+    "name": "Attune\u00ae Card",
+    "rewards": "4% cash rewards on gym, salons, spas, sports, recreation, entertainment, transit, EV charging, and thrift stores. 1% on other purchases.",
+    "intro_offer": "$100 cash rewards bonus after spending $500 in first 3 months + $50 donation to Capital Link.",
+    "annual_fee": "$0",
+    "apr": "NA",
+    "learn_more": "/attune-credit-card/"
+  },
+  {
+    "name": "Bilt Mastercard\u00ae",
+    "rewards": "1X on rent (up to 100,000 pts/year), 2X on travel, 3X on dining, 1X on other purchases. Double points on the 1st of the month (excluding rent, up to 1,000 bonus points).",
+    "intro_offer": "NA",
+    "annual_fee": "$0",
+    "apr": "NA",
+    "learn_more": "/bilt-rewards-credit-card/"
+  },
+  {
+    "name": "One Key\u2122 Card",
+    "rewards": "3% OneKeyCash on Expedia, Hotels.com, Vrbo, gas, groceries, and dining. 1.5% on other purchases.",
+    "intro_offer": "$300 in OneKeyCash\u2122 after you spend $1,000 on purchases in the first 3 months",
+    "annual_fee": "$0",
+    "apr": "NA",
+    "learn_more": "/one-key-credit-card/"
+  },
+  {
+    "name": "Choice Privileges\u00ae Mastercard\u00ae",
+    "rewards": "5X points on Choice Hotels stays and point purchases, 3X on gas, groceries, home improvement, and phone plans, 1X on other purchases.",
+    "intro_offer": "40,000 bonus points after spending $1,000 in the first 3 months",
+    "annual_fee": "$0",
+    "apr": "NA",
+    "learn_more": "/choice-hotel-privileges-mastercard/"
+  },
+  {
+    "name": "Choice Privileges\u00ae Select Mastercard\u00ae",
+    "rewards": "10X points on Choice Hotels stays and point purchases, 5X on gas, groceries, home improvement, and phone plans, 1X on other purchases.",
+    "intro_offer": "60,000 bonus points after spending $3,000 in the first 3 months",
+    "annual_fee": "$95",
+    "apr": "NA",
+    "learn_more": "/choice-hotels-privileges-select-mastercard/"
+  },
+  {
+    "name": "Signify Business Cash\u00ae Card",
+    "rewards": "Unlimited 2% cash rewards on business purchases.",
+    "intro_offer": "$500 cash rewards bonus after spending $5,000 on business purchases in the first 3 months",
+    "annual_fee": "$0",
+    "apr": "0% intro APR for 12 months on purchases, then 17.49% - 25.49% variable APR",
+    "learn_more": "/business-credit-cards/signify-business-cash-credit-card/"
+  }
+]
