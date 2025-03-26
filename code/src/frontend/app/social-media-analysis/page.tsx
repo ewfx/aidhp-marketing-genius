@@ -154,6 +154,7 @@ export default function SocialMediaAnalysis() {
         imageUrl: mockAdResponses.meta.imageUrl,
       })
       setAdType("meta")
+      setIsAdModalOpen(true)
     }
     if(type === "instagram") {
       setAdData({
@@ -161,6 +162,7 @@ export default function SocialMediaAnalysis() {
         imageUrl: mockAdResponses.instagram.imageUrl,
       })
       setAdType("instagram")
+      setIsAdModalOpen(true)
     }
     if(type === "linkedin") {
       setAdData({
@@ -168,6 +170,7 @@ export default function SocialMediaAnalysis() {
         imageUrl: mockAdResponses.linkedin.imageUrl,
       })
       setAdType("linkedin")
+      setIsAdModalOpen(true)
     } 
   }
 
@@ -275,6 +278,7 @@ export default function SocialMediaAnalysis() {
 
       {/* Ad Preview Modal */}
       <Dialog open={isAdModalOpen} onOpenChange={setIsAdModalOpen}>
+      
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle>
