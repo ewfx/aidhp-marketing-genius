@@ -90,6 +90,7 @@ some of the most efficient ways to create agentic flows within a piece of softwa
 ## 🧠 Overall Architecture
 
 Our platform is built on a microservices-based, event-driven architecture that leverages cutting-edge agentic AI technologies to create a seamless, intelligent recommendation + content generation system.
+![System Architecture](/artifacts/arch/HyperPersonalizationArchitecture.png)
 
 ## 🔬 Technical Components
 
