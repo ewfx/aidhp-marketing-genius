@@ -262,7 +262,7 @@ Describe the major technical or non-technical challenges your team encountered.
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/ewfx/aidhp-marketing-genius.git
    ```
 2. Install dependencies and run Frontend
    ```sh
@@ -286,5 +286,5 @@ Describe the major technical or non-technical challenges your team encountered.
 - 🔹 Other: Gemini API/ Vertex Imagen API / Zapier
 
 ## 👥 Team
-- **Avhijit nair** - [GitHub](#) | [LinkedIn](#)
-- **Devam Kakoty** - [GitHub](#) | [LinkedIn](#)
+- **Avhijit nair** - [GitHub](#) | [LinkedIn](https://www.linkedin.com/in/avhijit007/)
+- **Devam Kakoty** - [GitHub](#) | [LinkedIn](https://www.linkedin.com/in/devam-kakoty/)
