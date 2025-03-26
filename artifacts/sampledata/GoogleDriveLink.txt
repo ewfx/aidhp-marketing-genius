@@ -1,0 +1,3 @@
+Two sample datasets were synthetically generated for Marketing Genius- Customer Demographic Dataset and Customer Transactions Dataset. Since they are too large too be uploaded to GitHub, we have attached a link here.
+
+https://drive.google.com/drive/folders/1N7zGKEzfusZKYMCpaeNKXt8HXDYknjdL?usp=sharing
