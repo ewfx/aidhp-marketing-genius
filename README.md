@@ -93,7 +93,8 @@ Our platform is built on a microservices-based, event-driven architecture that l
 ![System Architecture](/artifacts/arch/HyperPersonalizationArchitecture.png)
 
 ## 🔬 Technical Components
-
+[Technical Doc](/artifacts/arch/technicalDocumentation) 
+[Presentation](/artifacts/arch/presentation) 
 ### 1. Data Collection Layer
 #### Technologies
 - **Zapier**: Automated data integration
@@ -263,14 +264,20 @@ Describe the major technical or non-technical challenges your team encountered.
    ```sh
    git clone https://github.com/your-repo.git
    ```
-2. Install dependencies  
+2. Install dependencies and run Frontend
    ```sh
-   npm install  # or pip install -r requirements.txt (for Python)
+   cd aidhp-marketing-genius/code/src/frontend
+   npm install
+   npm run dev
    ```
-3. Run the project  
+   This opens up the forntend on localhost
+3. Install dependencies and run backend  
    ```sh
-   npm start  # or python app.py
+   cd aidhp-marketing-genius/code/src/backend
+   pip install -r requirements.txt
+   python api.py
    ```
+   This runs backend on localhost
 
 ## 🏗️ Tech Stack
 - 🔹 Frontend: Next.js/Tailwind CSS
