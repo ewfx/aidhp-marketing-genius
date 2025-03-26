@@ -123,7 +123,7 @@ class HomeLoanSocialMediaInsightAgent(BaseAgent):
                         'trend_summary': insights.get('trend_summary')
                     }
                 )
-                
+                ad = self.llm_service._clean_ad_content(ad)
                 # Dynamically set ad based on platform
                 if platform == 'instagram':
                     insights['instagram_ad'] = ad

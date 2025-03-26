@@ -8,13 +8,13 @@ from models.socialMediaInsight import SocialMediaInsight
 import logging
 from core.baseAgent import BaseAgent
 
-class AutoLoanSocialMediaInsightAgent(BaseAgent):
+class MortgageSocialMediaInsightAgent(BaseAgent):
     """
-    Specialized agent for generating social media insights about Auto Loans
+    Specialized agent for generating social media insights about Mortgages
     """
     def __init__(self, 
-                 name: str = "HomeLoanSocialMediaInsightAgent",
-                 collection_name: str = "AutoLoanSocialData"):
+                 name: str = "MortgageSocialMediaInsightAgent",
+                 collection_name: str = "MortgageSocialData"):
         """
         Initialize the Auto Loan Social Media Insight Agent
         
@@ -31,16 +31,16 @@ class AutoLoanSocialMediaInsightAgent(BaseAgent):
         
         # Prompt template for insight generation
         self.prompt_template = ChatPromptTemplate.from_messages([
-            ("system", """You are an expert social media trend analyst specializing in auto loan usage and experience insights.
+            ("system", """You are an expert social media trend analyst specializing in mortgage usage and experience insights.
             
             Analyze the provided social media conversations with the following objectives:
-            1. Identify emerging trends in auto loan usage
+            1. Identify emerging trends in mortgage usage
             2. Understand consumer sentiments and behaviors
             3. Detect pain points and positive experiences
             4. Provide actionable insights for financial institutions
             
             Provide a structured, comprehensive analysis."""),
-            ("human", """Analyze the following social media conversations about auto loan usage:
+            ("human", """Analyze the following social media conversations about mortgage usage:
 
             Social Media Content:
             {content}
@@ -140,6 +140,7 @@ class AutoLoanSocialMediaInsightAgent(BaseAgent):
                 prompt_template=self.image_prompt_template,
                 input_data={'trend_summary': insights.get('trendSummary')}
             )
+            image_prompt = self.llm_service._clean_ad_content(image_prompt)
             print(image_prompt)
              # Generate and upload image using Imagen
             insights['trend_image_url'] = self.llm_service.generate_and_upload_imagen_image(
@@ -148,7 +149,7 @@ class AutoLoanSocialMediaInsightAgent(BaseAgent):
             # Store insights
             self.firebase_service.store_insights(
                 collection_name='SocialMediaInsights',
-                document_id='AutoLoan',
+                document_id='Mortgage',
                 data=insights
             )
             

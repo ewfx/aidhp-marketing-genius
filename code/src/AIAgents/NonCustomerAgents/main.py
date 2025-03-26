@@ -6,7 +6,8 @@ load_dotenv()
 # Import specific agents
 #from agents.creditCardAgent import CreditCardSocialMediaInsightAgent
 #from agents.homeLoanAgent import HomeLoanSocialMediaInsightAgent
-from agents.autoLoanAgent import AutoLoanSocialMediaInsightAgent
+# from agents.autoLoanAgent import AutoLoanSocialMediaInsightAgent
+from agents.mortgageAgent import MortgageSocialMediaInsightAgent
 
 def main():
     """
@@ -14,7 +15,7 @@ def main():
     """
     # Create and run Social Media Insight Agent
     #social_media_agent = CreditCardSocialMediaInsightAgent()
-    social_media_agent = AutoLoanSocialMediaInsightAgent()
+    social_media_agent = MortgageSocialMediaInsightAgent()
     social_media_agent.initialize()
     
     insights = social_media_agent.run()
