@@ -4,7 +4,7 @@ from flask import Flask
 from config import Config
 from flask_cors import CORS
 from datetime import timedelta
-from db.init import init_db
+from app.db.init import init_db
 
 db_client = None
 
