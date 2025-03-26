@@ -1,7 +1,6 @@
 import logging
 from datetime import datetime
 from flask import Blueprint, request
-from app.AdaptiveAnalyticsEngine.analytics_engine import AnalyticsEngine
 from app.InsightGenerator.AnalyzeLifeStage import analyze_life_stage
 from app.InsightGenerator.AnalyzeRetentionRisk import analyze_retention_risk
 from app.InsightGenerator.AnalyzeSpendingPattern.AnalyzeSpendingPattern import analyze_spending_patterns
@@ -29,7 +28,6 @@ def generate_initial_insights():
 
         for customer in customers:
             client_id = customer.id
-
             customer_info = customer.to_dict()
 
             # Fetch transactions associated with a specific client_id
@@ -70,4 +68,4 @@ def generate_initial_insights():
         # Optional: Further processing or notifications based on analysis results
 
     except Exception as e:
-        logging.error(f"Error in daily analysis: {e}")
+        logging.error(f"Error in running adaptive analytics: {e}")
