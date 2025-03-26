@@ -17,6 +17,8 @@ Our groundbreaking platform represents a transformative approach to financial pr
 
 ## 🎥 Demo
 📹 [Video Demo](/artifacts/demo/video/Screen%20Record.mp4) (if applicable)  
+![Demo Gif](/artifacts/demo/screenshots/ScreenRecord.gif)
+
 🖼️ Screenshots:
 
 ![Dashboard](artifacts/demo/screenshots/Screen1.jpg)
