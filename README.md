@@ -21,7 +21,17 @@ Our groundbreaking platform represents a transformative approach to financial pr
 📹 [Video Demo](#) (if applicable)  
 🖼️ Screenshots:
 
-![Screenshot 1](link-to-image)
+![Dashboard](artifacts/demo/screenshots/Screen1.jpg)
+![Pain Points](artifacts/demo/screenshots/Screen2.jpg)
+![Social analysis](artifacts/demo/screenshots/screen3.jpg)
+![meta Ad](artifacts/demo/screenshots/Screen4.jpg)
+![Linkedin Ad](artifacts/demo/screenshots/Screen5.jpg)
+![Customer Insights](artifacts/demo/screenshots/Screen6.jpg)
+![Email](artifacts/demo/screenshots/screen7.jpg)
+![SPush Notification](artifacts/demo/screenshots/Screen8.jpg)
+![Sms](artifacts/demo/screenshots/Screen10.jpg)
+![Data](artifacts/demo/screenshots/data.jpg)
+![zapier agents](artifacts/demo/screenshots/zapier.jpg)
 
 ## 💡 Inspiration
 What inspired you to create this project? Describe the problem you're solving.
