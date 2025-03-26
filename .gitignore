@@ -174,3 +174,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+#service account files
+hyperpersonalisation-firebase-key.json
+
