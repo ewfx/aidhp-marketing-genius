@@ -10,7 +10,6 @@
 - [How to Run](#how-to-run)
 - [Tech Stack](#tech-stack)
 - [Team](#team)
-
 ---
 
 ## 🎯 Introduction
@@ -33,7 +32,11 @@ Our groundbreaking platform represents a transformative approach to financial pr
 ![zapier agents](artifacts/demo/screenshots/zapier.jpg)
 
 ## 💡 Inspiration
-What inspired you to create this project? Describe the problem you're solving.
+We are enthusisastic AI participants who keep a tab on the latest AI developments, both via normal media as well as through hardcore research paper readings.
+Hyper-personalization software is something we have attempted to create in the past during a Google hackathon, where we won the first prize in the ecommerce category.
+So we though the same is very much applicable in the financial domain. Hence why we decided to do it as we really wanted to challenge ourselves on how we can improve the software
+we built last time. Added to that, last time we didn't really experiment with AI agents. But this time the system is completely agentic and throughout the development process we have learnt 
+some of the most efficient ways to create agentic flows within a piece of software.
 
 ## ⚙️ What It Does
 ## ✨ Key Features
@@ -84,7 +87,7 @@ What inspired you to create this project? Describe the problem you're solving.
 ## 🛠️ How We Built It
 ## 🧠 Overall Architecture
 
-Our platform is built on a microservices-based, event-driven architecture that leverages cutting-edge AI technologies to create a seamless, intelligent recommendation system.
+Our platform is built on a microservices-based, event-driven architecture that leverages cutting-edge agentic AI technologies to create a seamless, intelligent recommendation + content generation system.
 
 ## 🔬 Technical Components
 
