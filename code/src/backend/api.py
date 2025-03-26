@@ -3,7 +3,9 @@ from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, firestore
 import os
+from dotenv import load_dotenv
 
+load_dotenv()  # take environment variables
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
