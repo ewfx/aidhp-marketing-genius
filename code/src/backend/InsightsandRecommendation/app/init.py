@@ -16,10 +16,11 @@ def create_app():
 
     from app.APIs.RunAdaptiveAnalytics import run_adaptive_analytics_bp
     from app.APIs.GenerateInitialInsights import initial_insight_generation_bp
-
+    from app.APIs.GetSocialMediaInsights import social_media_insights_bp
     app.secret_key = os.urandom(24)  # Use a strong secret key in production
     app.permanent_session_lifetime = timedelta(days=5)  # Set session lifetime
     app.config.from_object(Config)
     app.register_blueprint(run_adaptive_analytics_bp)
     app.register_blueprint(initial_insight_generation_bp)
+    app.register_blueprint(social_media_insights_bp)
     return app
