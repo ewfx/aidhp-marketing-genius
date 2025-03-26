@@ -1,20 +1,37 @@
 "use client"
 
-import { useState } from "react"
+import { useState , useEffect} from "react"
 import Image from "next/image"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog"
 import { X } from "lucide-react"
+import axios from "axios"
 
+// Updated interface to match the API response
 interface Product {
   id: string
-  recommendations: [string]
-  insights: [string]
-  opportunity: [string]
-  summary: string
-
+  consumer_insights?: Array<{
+    insight?: string
+    details?: string
+    description?: string
+  }>
+  market_implications?: Array<{
+    implication?: string
+    opportunity?: string
+    description?: string
+  }>
+  recommendations?: Array<{
+    recommendation?: string
+    rationale?: string
+    description?: string
+  }>
+  trend_summary?: string
+  instagram_ad?: string
+  linkedin_ad?: string
+  meta_ad?: string
+  generated_at?: string
 }
 interface AdResponse {
   type: string
@@ -81,18 +98,77 @@ const mockAdResponses = {
 }
 
 export default function SocialMediaAnalysis() {
-  const [selectedProduct, setSelectedProduct] = useState(products[0])
+  const [products, setProducts] = useState<Product[]>([])
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [adType, setAdType] = useState<null | "meta" | "instagram" | "linkedin">(null)
   const [adData, setAdData] = useState<null | { content: string; imageUrl: string }>(null)
   const [isAdModalOpen, setIsAdModalOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  // Fetch products on component mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setIsLoading(true)
+        const response = await axios.get('http://127.0.0.1:5000/get-scoialmediainsights')
+        
+        // Filter out empty products
+        const validProducts = response.data.filter((product: Product) => 
+          product.consumer_insights?.length || 
+          product.market_implications?.length || 
+          product.recommendations?.length
+        )
+        
+        setProducts(validProducts)
+        // Set first product as default selected product
+        if (validProducts.length > 0) {
+          setSelectedProduct(validProducts[0])
+        }
+        setIsLoading(false)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred while fetching products')
+        setIsLoading(false)
+      }
+    }
 
+    fetchProducts()
+  }, [])
+  // Loading state
+  if (isLoading) {
+    return <div className="container mx-auto p-4">Loading products...</div>
+  }
+
+  // Error state
+  if (error) {
+    return <div className="container mx-auto p-4 text-red-500">{error}</div>
+  }
+
+  // If no products found
+  if (products.length === 0) {
+    return <div className="container mx-auto p-4">No products found.</div>
+  }
   const generateAd = (type: "meta" | "instagram" | "linkedin") => {
-    // Simulate API call
-    setTimeout(() => {
-      setAdType(type)
-      setAdData(mockAdResponses[type])
-      setIsAdModalOpen(true)
-    }, 500)
+    if (type === "meta") {
+      setAdData({
+        content: selectedProduct?.meta_ad || mockAdResponses.meta.content,
+        imageUrl: mockAdResponses.meta.imageUrl,
+      })
+      setAdType("meta")
+    }
+    if(type === "instagram") {
+      setAdData({
+        content: selectedProduct?.instagram_ad || mockAdResponses.instagram.content,
+        imageUrl: mockAdResponses.instagram.imageUrl,
+      })
+      setAdType("instagram")
+    }
+    if(type === "linkedin") {
+      setAdData({
+        content: selectedProduct?.linkedin_ad || mockAdResponses.linkedin.content,
+        imageUrl: mockAdResponses.linkedin.imageUrl,
+      })
+      setAdType("linkedin")
+    } 
   }
 
   return (
@@ -103,26 +179,65 @@ export default function SocialMediaAnalysis() {
         {products.map((product) => (
           <Card key={product.id} className="w-full">
             <CardHeader>
-              <CardTitle>{product.name}</CardTitle>
-              <CardDescription>{product.description}</CardDescription>
+              <CardTitle>{product.id}</CardTitle>
+              {product.trend_summary && (
+                <CardDescription>{product.trend_summary}</CardDescription>
+              )}
             </CardHeader>
             <CardContent>
               <Tabs defaultValue="insights" className="w-full">
                 <TabsList className="mb-4">
                   <TabsTrigger value="insights">Insights</TabsTrigger>
                   <TabsTrigger value="recommendations">Recommendations</TabsTrigger>
-                  <TabsTrigger value="opportunity">Opportunity</TabsTrigger>
+                  <TabsTrigger value="market_implications">Market Implications</TabsTrigger>
                 </TabsList>
+                
                 <TabsContent value="insights" className="p-4 bg-muted rounded-md">
-                  {product.insights}
+                  {product.consumer_insights && product.consumer_insights.length > 0 ? (
+                    <ul className="list-disc pl-5 space-y-2">
+                      {product.consumer_insights.map((insight, index) => (
+                        <li key={index}>
+                          <strong>{insight.insight || 'Insight'}:</strong> 
+                          {insight.details || insight.description || 'No details available'}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No insights available</p>
+                  )}
                 </TabsContent>
+                
                 <TabsContent value="recommendations" className="p-4 bg-muted rounded-md">
-                  {product.recommendations}
+                  {product.recommendations && product.recommendations.length > 0 ? (
+                    <ul className="list-disc pl-5 space-y-2">
+                      {product.recommendations.map((rec, index) => (
+                        <li key={index}>
+                          <strong>{rec.recommendation || 'Recommendation'}:</strong> 
+                          {rec.rationale || rec.description || 'No details available'}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No recommendations available</p>
+                  )}
                 </TabsContent>
-                <TabsContent value="opportunity" className="p-4 bg-muted rounded-md">
-                  {product.opportunity}
+                
+                <TabsContent value="market_implications" className="p-4 bg-muted rounded-md">
+                  {product.market_implications && product.market_implications.length > 0 ? (
+                    <ul className="list-disc pl-5 space-y-2">
+                      {product.market_implications.map((imp, index) => (
+                        <li key={index}>
+                          <strong>{imp.implication || 'Implication'}:</strong> 
+                          {imp.opportunity || imp.description || 'No details available'}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No market implications available</p>
+                  )}
                 </TabsContent>
               </Tabs>
+
 
               <div className="flex flex-wrap gap-3 mt-6">
                 <Button
@@ -164,7 +279,7 @@ export default function SocialMediaAnalysis() {
           <DialogHeader>
             <DialogTitle>
               {adType === "meta" ? "Meta Ad" : adType === "instagram" ? "Instagram Ad" : "LinkedIn Ad"} for{" "}
-              {selectedProduct.name}
+              {selectedProduct?.id}
             </DialogTitle>
           </DialogHeader>
           <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
