@@ -286,5 +286,5 @@ Describe the major technical or non-technical challenges your team encountered.
 - 🔹 Other: Gemini API/ Vertex Imagen API / Zapier
 
 ## 👥 Team
-- **Avhijit nair** - [GitHub](#) | [LinkedIn](https://www.linkedin.com/in/avhijit007/)
+- **Avhijit nair** - [GitHub](https://github.com/Avhijit-Nair) | [LinkedIn](https://www.linkedin.com/in/avhijit007/)
 - **Devam Kakoty** - [GitHub](#) | [LinkedIn](https://www.linkedin.com/in/devam-kakoty/)
