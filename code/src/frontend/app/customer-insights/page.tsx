@@ -12,46 +12,56 @@ const customers = [
     id: 1,
     name: "Jane Cooper",
     email: "jane.cooper@example.com",
-    insight: "Customer is a heavy credit card spender",
-    recommendation: "Offer more credit card related offers",
+    company: "Acme Inc",
+    status: "Active",
     lastPurchase: "2023-12-15",
     totalSpent: "$12,500",
+    insight: "Jane is highly engaged with our premium features.",
+    recommendation: "Offer Jane early access to our new AI-powered tools.",
   },
   {
     id: 2,
     name: "Wade Warren",
     email: "wade.warren@example.com",
-    insight: "customer is a frequent shopper at Walmart",
-    recommendation: "Offer walmart shopping discounts",
+    company: "Globex Corp",
+    status: "Active",
     lastPurchase: "2024-01-20",
     totalSpent: "$8,200",
+    insight: "Wade frequently uses our mobile app.",
+    recommendation: "Promote our mobile-exclusive deals to Wade.",
   },
   {
     id: 3,
     name: "Esther Howard",
     email: "esther.howard@example.com",
-    insight: "Customer has been reading a lot about Home Loans",
-    recommendation: "It seems that customer is looking for a home loan. Reach out to them with a home loan offer",
+    company: "Soylent Corp",
+    status: "Inactive",
     lastPurchase: "2023-10-05",
     totalSpent: "$5,100",
+    insight: "Esther hasn't logged in for several months.",
+    recommendation: "Send Esther a personalized re-engagement email.",
   },
   {
     id: 4,
     name: "Cameron Williamson",
     email: "cameron.williamson@example.com",
-    insight: "Customer has been posting a lot about cars on social media",
-    recommendation: "Maybe the customer is looking to buy a car. Reach out to them with car loan offers",
+    company: "Initech",
+    status: "Active",
     lastPurchase: "2024-02-10",
     totalSpent: "$15,800",
+    insight: "Cameron is a power user of our API.",
+    recommendation: "Invite Cameron to our developer conference.",
   },
   {
     id: 5,
     name: "Brooklyn Simmons",
     email: "brooklyn.simmons@example.com",
-    insight: "Acme Inc",
-    recommendation: "Active",
+    company: "Umbrella Corp",
+    status: "Active",
     lastPurchase: "2024-01-05",
     totalSpent: "$9,300",
+    insight: "Brooklyn often provides valuable feedback.",
+    recommendation: "Nominate Brooklyn for our customer advisory board.",
   },
 ]
 
@@ -83,6 +93,10 @@ export default function CustomerInsights() {
   const [contentType, setContentType] = useState<ContentType | null>(null)
   const [content, setContent] = useState("")
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [expandedContent, setExpandedContent] = useState<{
+    type: "insight" | "recommendation"
+    content: string
+  } | null>(null)
 
   const generateContent = (customer: (typeof customers)[0], type: ContentType) => {
     setSelectedCustomer(customer)
@@ -112,10 +126,12 @@ export default function CustomerInsights() {
             <TableRow>
               <TableHead>Name</TableHead>
               <TableHead>Email</TableHead>
-              <TableHead>Insights</TableHead>
-              <TableHead>Recommendation</TableHead>
+              <TableHead>Company</TableHead>
+              <TableHead>Status</TableHead>
               <TableHead>Last Purchase</TableHead>
               <TableHead>Total Spent</TableHead>
+              <TableHead>Insight</TableHead>
+              <TableHead>Recommendation</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -124,10 +140,38 @@ export default function CustomerInsights() {
               <TableRow key={customer.id}>
                 <TableCell className="font-medium">{customer.name}</TableCell>
                 <TableCell>{customer.email}</TableCell>
-                <TableCell>{customer.recommendation}</TableCell>
-                <TableCell>{customer.insight}</TableCell>
+                <TableCell>{customer.company}</TableCell>
+                <TableCell>
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      customer.status === "Active" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {customer.status}
+                  </span>
+                </TableCell>
                 <TableCell>{customer.lastPurchase}</TableCell>
                 <TableCell>{customer.totalSpent}</TableCell>
+                <TableCell>
+                  <Button
+                    variant="ghost"
+                    className="p-0 h-auto font-normal text-left justify-start hover:bg-transparent hover:underline"
+                    onClick={() => setExpandedContent({ type: "insight", content: customer.insight })}
+                  >
+                    {customer.insight.length > 40 ? `${customer.insight.substring(0, 40)}...` : customer.insight}
+                  </Button>
+                </TableCell>
+                <TableCell>
+                  <Button
+                    variant="ghost"
+                    className="p-0 h-auto font-normal text-left justify-start hover:bg-transparent hover:underline"
+                    onClick={() => setExpandedContent({ type: "recommendation", content: customer.recommendation })}
+                  >
+                    {customer.recommendation.length > 40
+                      ? `${customer.recommendation.substring(0, 40)}...`
+                      : customer.recommendation}
+                  </Button>
+                </TableCell>
                 <TableCell>
                   <div className="flex gap-2">
                     <Button size="sm" variant="outline" onClick={() => generateContent(customer, "email")}>
@@ -201,6 +245,20 @@ export default function CustomerInsights() {
               </Button>
             </div>
           </div>
+        </DialogContent>
+      </Dialog>
+      {/* Expanded Content Modal */}
+      <Dialog open={expandedContent !== null} onOpenChange={(open) => !open && setExpandedContent(null)}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{expandedContent?.type === "insight" ? "Customer Insight" : "Recommendation"}</DialogTitle>
+          </DialogHeader>
+          <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
+
+          <div className="p-4 bg-muted rounded-md">{expandedContent?.content}</div>
         </DialogContent>
       </Dialog>
     </div>
