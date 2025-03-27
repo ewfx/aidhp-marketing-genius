@@ -110,7 +110,7 @@ export default function SocialMediaAnalysis() {
     const fetchProducts = async () => {
       try {
         setIsLoading(true)
-        const response = await axios.get('http://127.0.0.1:5000/get-scoialmediainsights')
+        const response = await axios.get('https://recommendationengine-555147084511.us-central1.run.app/get-scoialmediainsights')
         
         // Filter out empty products
         const validProducts = response.data.filter((product: Product) => 
