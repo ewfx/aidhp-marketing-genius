@@ -24,14 +24,21 @@ def analyze_life_stage(data: Dict) -> Dict:
             Transaction Data (Complete Records):
             {json.dumps(data['transactions'], indent=2)}
 
-            Based on this information:
-            1. Identify the most probable life stage(s) this customer is in (e.g., young adult, family formation, empty nester, retirement)
-            2. Provide confidence level for each life stage prediction
-            3. List key indicators from the data that support your conclusion
-            4. Explain any ambiguities or alternative interpretations
-            5. Identify any notable spending patterns or financial behaviors
+            Analysis Instructions:
+             - Identify primary and potential alternative life stages
+             - Assign confidence levels (0-100%)
+             - Highlight key indicators supporting life stage prediction
+             - Explain reasoning and potential ambiguities
 
-            Format your response as JSON with keys: 'primary_life_stage', 'alternative_life_stages', 'confidence_level', 'key_indicators', 'reasoning'
+             Required Response Format:
+             Use the following JSON Schema to structure your JSON response-
+             {schema}
+
+             Evaluation Criteria:
+              - Depth of analysis
+              - Quality of indicators
+              - Clarity of reasoning
+              - Statistical confidence of predictions
             """
 
         try:
@@ -50,9 +57,10 @@ def analyze_life_stage(data: Dict) -> Dict:
             return result
         except json.JSONDecodeError as e:
             logger.error(f"Error parsing Gemini response: {str(e)}")
+            logger.info(response)
             return {
                 "error": "Could not parse Gemini response",
-                "raw_response": response.text,
+                "raw_response": response,
                 "message": str(e)
             }
 
@@ -68,3 +76,86 @@ def analyze_life_stage(data: Dict) -> Dict:
             "error": "Unexpected error",
             "message": str(e)
         }
+
+schema = {
+        "type": "object",
+        "properties": {
+            "primary_life_stage": {
+                "type": "string",
+                "enum": [
+                    "student",
+                    "young_adult",
+                    "family_formation",
+                    "mid_career",
+                    "empty_nester",
+                    "pre_retirement",
+                    "retirement"
+                ]
+            },
+            "alternative_life_stages": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "student",
+                        "young_adult",
+                        "family_formation",
+                        "mid_career",
+                        "empty_nester",
+                        "pre_retirement",
+                        "retirement"
+                    ]
+                }
+            },
+            "confidence_level": {
+                "type": "object",
+                "properties": {
+                    "primary_stage": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 100
+                    },
+                    "alternative_stages": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "stage": {"type": "string"},
+                                "confidence": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 100
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "key_indicators": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "category": {"type": "string"},
+                        "details": {"type": "string"},
+                        "weight": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        }
+                    }
+                }
+            },
+            "reasoning": {
+                "type": "string",
+                "maxLength": 1000
+            }
+        },
+        "required": [
+            "primary_life_stage",
+            "alternative_life_stages",
+            "confidence_level",
+            "key_indicators",
+            "reasoning"
+        ]
+    }

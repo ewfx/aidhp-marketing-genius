@@ -130,11 +130,13 @@ celerybeat.pid
 # Environments
 .env
 .venv
+.idea
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+
 
 # Spyder project settings
 .spyderproject
@@ -173,5 +175,11 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+<<<<<<< HEAD
 #node modules
 node_modules/
+=======
+#service account files
+hyperpersonalisation-firebase-key.json
+
+>>>>>>> a69bad1acc20e7fc18592ed2442c25758bb11780

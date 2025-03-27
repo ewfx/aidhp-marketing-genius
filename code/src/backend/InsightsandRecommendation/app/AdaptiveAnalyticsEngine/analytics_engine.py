@@ -1,9 +1,9 @@
 from app.AdaptiveAnalyticsEngine.services.customer_insights_updater import CustomerDataUpdater
 from app.AdaptiveAnalyticsEngine.services.llm_based_analysis import prepare_llm_context, analyze_with_llm
 from app.AdaptiveAnalyticsEngine.services.summarize_data import summarize_data
-from AnalyticsConfig.config import DEFAULT_CONFIG
+from app.AdaptiveAnalyticsEngine.AnalyticsConfig.config import DEFAULT_CONFIG
 from app.init import db_client
-from services.data_fetcher import DataFetcher
+from app.AdaptiveAnalyticsEngine.services.data_fetcher import DataFetcher
 import logging
 
 # Setup logging

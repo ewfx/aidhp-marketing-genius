@@ -16,6 +16,7 @@
 Our groundbreaking platform represents a transformative approach to financial product personalization, leveraging state-of-the-art artificial intelligence to create a dynamic, intelligent recommendation ecosystem. By integrating advanced multi-agent AI systems, real-time data processing, and sophisticated insight generation, we've developed a solution that goes beyond traditional marketing approaches, offering unprecedented levels of personalization and customer understanding.
 
 ## 🎥 Demo
+🌏 [Live Demo](https://hyperpersonalisationapp.firebaseapp.com/)
 📹 [Video Demo](/artifacts/demo/video/Screen%20Record.mp4) (if applicable)  
 ![Demo Gif](/artifacts/demo/screenshots/ScreenRecord.gif)
 
@@ -286,5 +287,5 @@ Describe the major technical or non-technical challenges your team encountered.
 - 🔹 Other: Gemini API/ Vertex Imagen API / Zapier
 
 ## 👥 Team
-- **Avhijit nair** - [GitHub](#) | [LinkedIn](https://www.linkedin.com/in/avhijit007/)
+- **Avhijit nair** - [GitHub](https://github.com/Avhijit-Nair) | [LinkedIn](https://www.linkedin.com/in/avhijit007/)
 - **Devam Kakoty** - [GitHub](#) | [LinkedIn](https://www.linkedin.com/in/devam-kakoty/)
